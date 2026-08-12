@@ -1,0 +1,51 @@
+{
+    "name": "mrclln/livewire-form-builder",
+    "description": "A dynamic drag-and-drop form builder for Laravel Livewire. Generates form schema JSON and renders form fields with Tailwind CSS.",
+    "keywords": [
+        "laravel",
+        "livewire",
+        "form-builder",
+        "drag-and-drop",
+        "alpinejs",
+        "tailwind"
+    ],
+    "homepage": "https://github.com/mrclln/livewire-form-builder",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "mrclln",
+            "email": "mojicmarcallen@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.2",
+        "illuminate/support": "^11.0 || ^12.0 || ^13.0",
+        "livewire/livewire": "^4.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^9.0 || ^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vendor\\LivewireFormBuilder\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Vendor\\LivewireFormBuilder\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Vendor\\LivewireFormBuilder\\LivewireFormBuilderServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
