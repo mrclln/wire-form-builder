@@ -31,11 +31,6 @@
             "Vendor\\LivewireFormBuilder\\": "src/"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Vendor\\LivewireFormBuilder\\Tests\\": "tests/"
-        }
-    },
     "extra": {
         "laravel": {
             "providers": [
