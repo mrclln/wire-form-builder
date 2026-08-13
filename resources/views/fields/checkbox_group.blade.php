@@ -1,6 +1,7 @@
 @php
     $s = config('wire-form-builder.styles.controls.checkbox_group');
     $wrapper = trim(($s['wrapper'] ?? '') . ' ' . ($field['className'] ?? ''));
+    $control = $field['controlClass'] ?? '';
     $options = $field['options'] ?? [];
     $value = $field['value'] ?? [];
     $value = is_array($value) ? $value : [];
@@ -16,7 +17,7 @@
             <input type="checkbox" name="checkbox-group-{{ $field['name'] }}" id="field-{{ $field['name'] }}-{{ $i }}"
                 value="{{ $opt }}"
                 @if (!empty($field['required'])) required @endif
-                class="{{ $s['option_input'] }}"
+                class="{{ $s['option_input'] }} @if($control) {{ $control }} @endif"
                 @if (empty($preview))
                     wire:model="schemaFields.{{ $index }}.value"
                 @else

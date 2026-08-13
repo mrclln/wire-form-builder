@@ -70,9 +70,8 @@ return [
         |----------------------------------------------------------------------
         */
 
-        'form' => 'grid grid-cols-1 gap-5 lg:grid-cols-2',
-        'form_field_full' => 'lg:col-span-2',
-        'submit_button' => 'inline-flex items-center justify-center rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2',
+        'form' => 'grid grid-cols-1 gap-5 lg:grid-cols-2 xl:grid-cols-2',
+        'form_field_full' => 'lg:col-span-2 xl:col-span-2',
 
         /*
         |----------------------------------------------------------------------

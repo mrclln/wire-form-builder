@@ -139,11 +139,22 @@
                             @endif
 
                             <div class="{{ config('wire-form-builder.styles.drawer_field') }}">
-                                <label class="{{ config('wire-form-builder.styles.drawer_label') }}">CSS Class
+                                <label class="{{ config('wire-form-builder.styles.drawer_label') }}">Container CSS
+                                    Class
                                     (optional)</label>
                                 <input type="text" wire:model="editingField.className"
                                     class="{{ config('wire-form-builder.styles.drawer_input') }}">
                             </div>
+
+                            @if (!in_array($editingField['type'] ?? '', ['header', 'paragraph', 'section']))
+                                <div class="{{ config('wire-form-builder.styles.drawer_field') }}">
+                                    <label class="{{ config('wire-form-builder.styles.drawer_label') }}">Control CSS
+                                        Class
+                                        (optional)</label>
+                                    <input type="text" wire:model="editingField.controlClass"
+                                        class="{{ config('wire-form-builder.styles.drawer_input') }}">
+                                </div>
+                            @endif
 
                             <div class="{{ config('wire-form-builder.styles.drawer_actions') }}">
                                 <button type="button" wire:click="closeDrawer"

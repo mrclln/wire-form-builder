@@ -1,10 +1,11 @@
 @php
     $s = config('wire-form-builder.styles.controls.checkbox');
     $wrapper = trim(($s['wrapper'] ?? '') . ' ' . ($field['className'] ?? ''));
+    $control = $field['controlClass'] ?? '';
 @endphp
 <div @if ($wrapper) class="{{ $wrapper }}" @endif>
     <input type="checkbox" id="field-{{ $field['name'] }}" @if (!empty($field['required'])) required @endif
-        class="{{ $s['input'] }}"         @if (empty($preview)) wire:model="schemaFields.{{ $index }}.value" @endif
+        class="{{ $s['input'] }} @if($control) {{ $control }} @endif"         @if (empty($preview)) wire:model="schemaFields.{{ $index }}.value" @endif
         @if (!empty($preview)) disabled @endif>
     <label for="field-{{ $field['name'] }}" class="{{ $s['label'] }}">
         {{ $field['label'] ?? 'Checkbox' }}
