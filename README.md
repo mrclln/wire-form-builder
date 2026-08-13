@@ -32,6 +32,46 @@ Inspired by the *schema layout and field options* of
 - Livewire 4
 - Tailwind CSS (in your host app)
 
+## Tailwind CSS setup
+
+This package ships its styles as Tailwind utility classes through its Blade
+views and `config/wire-form-builder.php`. You must make sure your app's
+Tailwind build scans those files, otherwise classes (e.g. the builder's
+`grid-cols-[16rem_1fr]`) are never generated and the palette/canvas will
+appear unstyled and stacked.
+
+### Tailwind v4
+
+Tailwind v4 does **not** scan `vendor/` automatically. Add the package's
+views (and optionally its config) as a source in your `resources/css/app.css`:
+
+```css
+@import "tailwindcss";
+
+@source "../../vendor/mrclln/wire-form-builder/resources/views";
+@source "../../vendor/mrclln/wire-form-builder/config";
+```
+
+Then rebuild your assets and hard-refresh:
+
+```bash
+npm run build
+```
+
+### Tailwind v3
+
+Include the package in your `content` globs in `tailwind.config.js`:
+
+```js
+export default {
+    content: [
+        './resources/**/*.blade.php',
+        './vendor/mrclln/wire-form-builder/**/*.blade.php',
+        './vendor/mrclln/wire-form-builder/config/**/*.php',
+    ],
+};
+```
+
 ## Installation
 
 ```bash
