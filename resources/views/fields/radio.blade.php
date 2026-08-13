@@ -1,5 +1,5 @@
 @php
-    $s = config('livewire-form-builder.styles.controls.radio');
+    $s = config('wire-form-builder.styles.controls.radio');
     $wrapper = trim(($s['wrapper'] ?? '') . ' ' . ($field['className'] ?? ''));
     $options = $field['options'] ?? [];
 @endphp
@@ -21,3 +21,4 @@
         </div>
     @endforeach
 </div>
+

@@ -1,5 +1,5 @@
 @php
-    $s = config('livewire-form-builder.styles.controls.textarea');
+    $s = config('wire-form-builder.styles.controls.textarea');
     $wrapper = trim(($s['wrapper'] ?? '') . ' ' . ($field['className'] ?? ''));
 @endphp
 <div @if($wrapper) class="{{ $wrapper }}" @endif>
@@ -15,3 +15,4 @@
         @if(!empty($preview)) disabled @endif
     ></textarea>
 </div>
+

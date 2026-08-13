@@ -12,7 +12,7 @@ class FormRenderer extends Component
      * Accepts a plain array or a JSON string on mount.
      *
      * Marked #[Modelable] so a parent component can bind this property with
-     *   <livewire:livewire-form-builder.form-renderer wire:model="formSchema" />
+     *   <livewire:wire-form-builder.form-renderer wire:model="formSchema" />
      * When users fill in rendered fields, the `value` key is written into each
      * schema entry, so the parent receives the schema plus answers in one bound
      * property — no submit button required.
@@ -115,6 +115,6 @@ class FormRenderer extends Component
 
     public function render()
     {
-        return view('livewire-form-builder::form-renderer');
+        return view('wire-form-builder::form-renderer');
     }
 }

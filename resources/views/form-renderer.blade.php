@@ -1,8 +1,8 @@
 <div>
-    <div class="{{ config('livewire-form-builder.styles.form') }}">
+    <div class="{{ config('wire-form-builder.styles.form') }}">
         @foreach ($schemaFields ?? [] as $index => $field)
             @php
-                $partial = 'livewire-form-builder::fields.' . ($field['type'] ?? 'text');
+                $partial = 'wire-form-builder::fields.' . ($field['type'] ?? 'text');
             @endphp
 
             @if (view()->exists($partial))
@@ -17,3 +17,4 @@
         @endforeach
     </div>
 </div>
+

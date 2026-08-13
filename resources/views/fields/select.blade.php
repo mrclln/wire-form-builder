@@ -1,5 +1,5 @@
 @php
-    $s = config('livewire-form-builder.styles.controls.select');
+    $s = config('wire-form-builder.styles.controls.select');
     $wrapper = trim(($s['wrapper'] ?? '') . ' ' . ($field['className'] ?? ''));
     $options = $field['options'] ?? [];
 @endphp
@@ -19,3 +19,4 @@
         @endforeach
     </select>
 </div>
+

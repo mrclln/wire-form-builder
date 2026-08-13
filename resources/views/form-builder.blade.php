@@ -1,14 +1,14 @@
 <div x-data class="grid grid-cols-1 gap-6 lg:grid-cols-[16rem_1fr]">
 
     {{-- Sidebar palette --}}
-    <aside class="{{ config('livewire-form-builder.styles.sidebar') }}">
-        <h3 class="{{ config('livewire-form-builder.styles.sidebar_title') }}">Fields</h3>
+    <aside class="{{ config('wire-form-builder.styles.sidebar') }}">
+        <h3 class="{{ config('wire-form-builder.styles.sidebar_title') }}">Fields</h3>
 
         <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-1">
             @foreach ($this->fieldTypes as $type)
                 @php $def = \Vendor\LivewireFormBuilder\FieldDefinitions::get($type); @endphp
-                <button type="button" wire:click="addField('{{ $type }}')" class="{!! config('livewire-form-builder.styles.palette_item') !!}">
-                    <span class="{!! config('livewire-form-builder.styles.palette_icon') !!}">{!! $def['icon'] ?? '' !!}</span>
+                <button type="button" wire:click="addField('{{ $type }}')" class="{!! config('wire-form-builder.styles.palette_item') !!}">
+                    <span class="{!! config('wire-form-builder.styles.palette_icon') !!}">{!! $def['icon'] ?? '' !!}</span>
                     {{ $def['label'] ?? $type }}
                 </button>
             @endforeach
@@ -17,14 +17,14 @@
 
     {{-- Canvas --}}
     <div class="min-w-0">
-        <div wire:sort="reorder" wire:sort:group="fields" class="{{ config('livewire-form-builder.styles.canvas') }}">
+        <div wire:sort="reorder" wire:sort:group="fields" class="{{ config('wire-form-builder.styles.canvas') }}">
             @forelse ($fields as $index => $field)
                 <div wire:sort:item="{{ $field['id'] }}" wire:key="field-{{ $field['id'] }}"
-                    class="{{ config('livewire-form-builder.styles.field_wrapper') }} {{ $editingIndex === $index ? config('livewire-form-builder.styles.field_wrapper_selected') : '' }}">
+                    class="{{ config('wire-form-builder.styles.field_wrapper') }} {{ $editingIndex === $index ? config('wire-form-builder.styles.field_wrapper_selected') : '' }}">
                     {{-- Top row: drag handle (left) + actions (right) --}}
                     <div class="flex items-center justify-between gap-3 p-1">
                         {{-- Drag handle --}}
-                        <span wire:sort:handle class="{{ config('livewire-form-builder.styles.drag_handle') }}"
+                        <span wire:sort:handle class="{{ config('wire-form-builder.styles.drag_handle') }}"
                             title="Drag to reorder">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                                 class="h-4 w-4">
@@ -34,10 +34,10 @@
                         </span>
 
                         {{-- Per-field actions --}}
-                        <div wire:sort:ignore class="{{ config('livewire-form-builder.styles.actions') }}">
+                        <div wire:sort:ignore class="{{ config('wire-form-builder.styles.actions') }}">
                             <button type="button" wire:click="editField({{ $index }})" title="Edit"
                                 aria-label="Edit field"
-                                class="{{ config('livewire-form-builder.styles.btn') }} {{ config('livewire-form-builder.styles.btn_edit') }}">
+                                class="{{ config('wire-form-builder.styles.btn') }} {{ config('wire-form-builder.styles.btn_edit') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                                     class="h-4 w-4">
                                     <path
@@ -46,7 +46,7 @@
                             </button>
                             <button type="button" wire:click="duplicateField({{ $index }})" title="Duplicate"
                                 aria-label="Duplicate field"
-                                class="{{ config('livewire-form-builder.styles.btn') }} {{ config('livewire-form-builder.styles.btn_duplicate') }}">
+                                class="{{ config('wire-form-builder.styles.btn') }} {{ config('wire-form-builder.styles.btn_duplicate') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                                     class="h-4 w-4">
                                     <path
@@ -55,7 +55,7 @@
                             </button>
                             <button type="button" wire:click="removeField({{ $index }})"
                                 wire:confirm="Remove this field?" title="Delete" aria-label="Delete field"
-                                class="{{ config('livewire-form-builder.styles.btn') }} {{ config('livewire-form-builder.styles.btn_delete') }}">
+                                class="{{ config('wire-form-builder.styles.btn') }} {{ config('wire-form-builder.styles.btn_delete') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                                     class="h-4 w-4">
                                     <path fill-rule="evenodd"
@@ -71,7 +71,7 @@
                         <p class="mb-1 truncate text-xs font-medium text-gray-400">{{ $field['name'] ?? '' }}</p>
 
                         {{-- Field preview --}}
-                        @include('livewire-form-builder::fields.' . $field['type'], [
+                        @include('wire-form-builder::fields.' . $field['type'], [
                             'field' => $field,
                             'preview' => true,
                         ])
@@ -79,44 +79,44 @@
 
                     {{-- Inline editor: appears directly below the field being edited --}}
                     @if ($drawerOpen && $editingIndex === $index)
-                        <div wire:sort:ignore class="{{ config('livewire-form-builder.styles.drawer') }}">
-                            <h3 class="{{ config('livewire-form-builder.styles.drawer_title') }}">
+                        <div wire:sort:ignore class="{{ config('wire-form-builder.styles.drawer') }}">
+                            <h3 class="{{ config('wire-form-builder.styles.drawer_title') }}">
                                 Edit {{ ucfirst($editingField['type'] ?? '') }} Field
                             </h3>
 
-                            <div class="{{ config('livewire-form-builder.styles.drawer_field') }}">
-                                <label class="{{ config('livewire-form-builder.styles.drawer_label') }}">Field Name
+                            <div class="{{ config('wire-form-builder.styles.drawer_field') }}">
+                                <label class="{{ config('wire-form-builder.styles.drawer_label') }}">Field Name
                                     (key)
                                 </label>
                                 <input type="text" wire:model="editingField.name"
-                                    class="{{ config('livewire-form-builder.styles.drawer_input') }}">
+                                    class="{{ config('wire-form-builder.styles.drawer_input') }}">
                             </div>
 
-                            <div class="{{ config('livewire-form-builder.styles.drawer_field') }}">
-                                <label class="{{ config('livewire-form-builder.styles.drawer_label') }}">Label</label>
+                            <div class="{{ config('wire-form-builder.styles.drawer_field') }}">
+                                <label class="{{ config('wire-form-builder.styles.drawer_label') }}">Label</label>
                                 <input type="text" wire:model="editingField.label"
-                                    class="{{ config('livewire-form-builder.styles.drawer_input') }}">
+                                    class="{{ config('wire-form-builder.styles.drawer_input') }}">
                             </div>
 
                             @if (in_array($editingField['type'] ?? '', ['text', 'textarea']))
-                                <div class="{{ config('livewire-form-builder.styles.drawer_field') }}">
+                                <div class="{{ config('wire-form-builder.styles.drawer_field') }}">
                                     <label
-                                        class="{{ config('livewire-form-builder.styles.drawer_label') }}">Placeholder</label>
+                                        class="{{ config('wire-form-builder.styles.drawer_label') }}">Placeholder</label>
                                     <input type="text" wire:model="editingField.placeholder"
-                                        class="{{ config('livewire-form-builder.styles.drawer_input') }}">
+                                        class="{{ config('wire-form-builder.styles.drawer_input') }}">
                                 </div>
                             @endif
 
                             @if (in_array($editingField['type'] ?? '', ['select', 'radio']))
-                                <div class="{{ config('livewire-form-builder.styles.drawer_field') }}">
-                                    <label class="{{ config('livewire-form-builder.styles.drawer_label') }}">Options
+                                <div class="{{ config('wire-form-builder.styles.drawer_field') }}">
+                                    <label class="{{ config('wire-form-builder.styles.drawer_label') }}">Options
                                         (one per line)</label>
                                     <textarea wire:model="editingOptionsText" rows="5"
-                                        class="{{ config('livewire-form-builder.styles.drawer_input') }}"></textarea>
+                                        class="{{ config('wire-form-builder.styles.drawer_input') }}"></textarea>
                                 </div>
                             @endif
 
-                            <div class="{{ config('livewire-form-builder.styles.drawer_field') }}">
+                            <div class="{{ config('wire-form-builder.styles.drawer_field') }}">
                                 <label class="inline-flex items-center gap-2 text-sm text-gray-700">
                                     <input type="checkbox" wire:model="editingField.required"
                                         class="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
@@ -124,24 +124,24 @@
                                 </label>
                             </div>
 
-                            <div class="{{ config('livewire-form-builder.styles.drawer_field') }}">
-                                <label class="{{ config('livewire-form-builder.styles.drawer_label') }}">CSS Class
+                            <div class="{{ config('wire-form-builder.styles.drawer_field') }}">
+                                <label class="{{ config('wire-form-builder.styles.drawer_label') }}">CSS Class
                                     (optional)</label>
                                 <input type="text" wire:model="editingField.className"
-                                    class="{{ config('livewire-form-builder.styles.drawer_input') }}">
+                                    class="{{ config('wire-form-builder.styles.drawer_input') }}">
                             </div>
 
-                            <div class="{{ config('livewire-form-builder.styles.drawer_actions') }}">
+                            <div class="{{ config('wire-form-builder.styles.drawer_actions') }}">
                                 <button type="button" wire:click="closeDrawer"
-                                    class="{{ config('livewire-form-builder.styles.drawer_btn_secondary') }}">Cancel</button>
+                                    class="{{ config('wire-form-builder.styles.drawer_btn_secondary') }}">Cancel</button>
                                 <button type="button" wire:click="saveField"
-                                    class="{{ config('livewire-form-builder.styles.drawer_btn_primary') }}">Save</button>
+                                    class="{{ config('wire-form-builder.styles.drawer_btn_primary') }}">Save</button>
                             </div>
                         </div>
                     @endif
                 </div>
             @empty
-                <div class="{{ config('livewire-form-builder.styles.empty_canvas') }}">
+                <div class="{{ config('wire-form-builder.styles.empty_canvas') }}">
                     Click a field on the left to add it to your form.
                 </div>
             @endforelse
@@ -192,3 +192,4 @@
     </div>
 
 </div>
+

@@ -17,21 +17,21 @@ class LivewireFormBuilderServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // Register Livewire components with their blade tag aliases.
-        Livewire::component('livewire-form-builder.form-builder', FormBuilder::class);
-        Livewire::component('livewire-form-builder.form-renderer', FormRenderer::class);
+        Livewire::component('wire-form-builder.form-builder', FormBuilder::class);
+        Livewire::component('wire-form-builder.form-renderer', FormRenderer::class);
 
         // Publish the configuration file.
         $this->publishes([
-            __DIR__ . '/../config/livewire-form-builder.php' => config_path('livewire-form-builder.php'),
-        ], 'livewire-form-builder-config');
+            __DIR__ . '/../config/wire-form-builder.php' => config_path('wire-form-builder.php'),
+        ], 'wire-form-builder-config');
 
         // Publish the Blade views so they can be customized.
         $this->publishes([
-            __DIR__ . '/../resources/views' => resource_path('views/vendor/livewire-form-builder'),
-        ], 'livewire-form-builder-views');
+            __DIR__ . '/../resources/views' => resource_path('views/vendor/wire-form-builder'),
+        ], 'wire-form-builder-views');
 
         // Load package views. Laravel will prefer the published copy if present.
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'livewire-form-builder');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'wire-form-builder');
     }
 
     /**
@@ -40,12 +40,12 @@ class LivewireFormBuilderServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/livewire-form-builder.php',
-            'livewire-form-builder'
+            __DIR__ . '/../config/wire-form-builder.php',
+            'wire-form-builder'
         );
 
         // Singleton backing the FormBuilder facade so it can be used from plain PHP.
-        $this->app->singleton(FormBuilderManager::class, fn () => new FormBuilderManager());
+        $this->app->singleton(FormBuilderManager::class, fn() => new FormBuilderManager());
 
         // Register the `FormBuilder` facade alias if not already bound.
         if (! Facade::getFacadeApplication()) {

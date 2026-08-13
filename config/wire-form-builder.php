@@ -10,7 +10,7 @@ return [
     | Every CSS class used by the FormBuilder and FormRenderer components is
     | defined here so you can fully restyle the package without touching the
     | Blade views. Override any value by publishing the config and editing
-    | config/livewire-form-builder.php in your application.
+    | config/wire-form-builder.php in your application.
     |
     */
 

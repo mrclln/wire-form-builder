@@ -1,5 +1,5 @@
 {
-    "name": "mrclln/livewire-form-builder",
+    "name": "mrclln/wire-form-builder",
     "description": "A dynamic drag-and-drop form builder for Laravel Livewire. Generates form schema JSON and renders form fields with Tailwind CSS.",
     "keywords": [
         "laravel",
@@ -9,7 +9,7 @@
         "alpinejs",
         "tailwind"
     ],
-    "homepage": "https://github.com/mrclln/livewire-form-builder",
+    "homepage": "https://github.com/mrclln/wire-form-builder",
     "license": "MIT",
     "type": "library",
     "authors": [

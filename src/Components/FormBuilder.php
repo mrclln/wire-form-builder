@@ -22,7 +22,7 @@ class FormBuilder extends Component
      * The persisted form schema as an array of field definitions.
      *
      * Marked #[Modelable] so a parent component may bind this property with
-     *   <livewire:livewire-form-builder.form-builder wire:model="formSchema" />
+     *   <livewire:wire-form-builder.form-builder wire:model="formSchema" />
      * and keep it in two-way sync as fields are added, edited, reordered, or
      * removed. (Only one #[Modelable] property is permitted per Livewire
      * component, so `fields` stays internal.)
@@ -106,7 +106,7 @@ class FormBuilder extends Component
     public function fieldTypes(): array
     {
         return config(
-            'livewire-form-builder.field_types',
+            'wire-form-builder.field_types',
             array_keys(FieldDefinitions::all())
         );
     }
@@ -236,8 +236,8 @@ class FormBuilder extends Component
     protected function parseOptions(string $text): array
     {
         return collect(explode("\n", $text))
-            ->map(fn ($line) => trim($line))
-            ->filter(fn ($line) => $line !== '')
+            ->map(fn($line) => trim($line))
+            ->filter(fn($line) => $line !== '')
             ->values()
             ->all();
     }
@@ -290,6 +290,6 @@ class FormBuilder extends Component
 
     public function render()
     {
-        return view('livewire-form-builder::form-builder');
+        return view('wire-form-builder::form-builder');
     }
 }

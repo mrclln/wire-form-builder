@@ -1,5 +1,5 @@
 @php
-    $s = config('livewire-form-builder.styles.controls.file');
+    $s = config('wire-form-builder.styles.controls.file');
     $wrapper = trim(($s['wrapper'] ?? '') . ' ' . ($field['className'] ?? ''));
 @endphp
 <div @if ($wrapper) class="{{ $wrapper }}" @endif>
@@ -12,3 +12,4 @@
         @if (empty($preview)) wire:model="schemaFields.{{ $index }}.value" @endif
         @if (!empty($preview)) disabled @endif>
 </div>
+

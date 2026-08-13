@@ -1,5 +1,5 @@
 @php
-    $s = config('livewire-form-builder.styles.controls.checkbox');
+    $s = config('wire-form-builder.styles.controls.checkbox');
     $wrapper = trim(($s['wrapper'] ?? '') . ' ' . ($field['className'] ?? ''));
 @endphp
 <div @if ($wrapper) class="{{ $wrapper }}" @endif>
@@ -13,3 +13,4 @@
         @endif
     </label>
 </div>
+
