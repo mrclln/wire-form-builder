@@ -25,6 +25,14 @@ Inspired by the *schema layout and field options* of
 - 🎨 **Fully Tailwind-configurable** — every class is pulled from a publishable
   `config/wire-form-builder.php`.
 
+## Demo
+
+See the form builder in action:
+
+[![Livewire Form Builder Demo](https://img.youtube.com/vi/pppGvF0KTZQ/maxresdefault.jpg)](https://youtu.be/pppGvF0KTZQ)
+
+▶️ [Watch the demo on YouTube](https://youtu.be/pppGvF0KTZQ)
+
 ## Requirements
 
 - PHP >= 8.2
