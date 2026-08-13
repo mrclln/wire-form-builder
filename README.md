@@ -11,8 +11,10 @@ Inspired by the *schema layout and field options* of
 ## Features
 
 - 🧩 **Drag & drop canvas** with Livewire 4's native `wire:sortable` reordering.
-- 🎛 **Sidebar palette** of field types: text, textarea, select, checkbox, radio,
-  date, and file.
+- 🎛 **Sidebar palette** of field types: text, textarea, select, checkbox,
+  checkbox group, radio, date, file, plus layout elements (header, paragraph),
+  and **Section** dividers that render the form as a multi-step wizard (Google
+  Forms-style), where fields below each section become their own page.
 - ⚙️ **Field settings drawer** to edit label, name, placeholder, required, options,
   and a custom CSS class (`className`).
 - 📋 **Duplicate fields** with a single click to copy any field on the canvas.

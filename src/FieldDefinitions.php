@@ -108,6 +108,58 @@ class FieldDefinitions
                     'className' => '',
                 ],
             ],
+            'header' => [
+                'type' => 'header',
+                'label' => 'Header',
+                'icon' => '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>',
+                'properties' => ['name', 'label', 'className'],
+                'non_input' => true,
+                'defaults' => [
+                    'name' => 'header_field',
+                    'label' => 'Section Title',
+                    'className' => '',
+                ],
+            ],
+            'paragraph' => [
+                'type' => 'paragraph',
+                'label' => 'Paragraph',
+                'icon' => '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5M3.75 9h16.5M3.75 12.75h10.5M3.75 16.5h10.5" /></svg>',
+                'properties' => ['name', 'label', 'className'],
+                'non_input' => true,
+                'defaults' => [
+                    'name' => 'paragraph_field',
+                    'label' => 'Paragraph text describing this section.',
+                    'className' => '',
+                ],
+            ],
+            'checkbox_group' => [
+                'type' => 'checkbox_group',
+                'label' => 'Checkbox Group',
+                'icon' => '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5M8.25 6.75v.008M8.25 12v.008M8.25 17.25v.008" /></svg>',
+                'properties' => ['name', 'label', 'required', 'options', 'className'],
+                'multiple' => true,
+                'defaults' => [
+                    'name' => 'checkbox_group_field',
+                    'label' => 'Select all that apply',
+                    'required' => false,
+                    'options' => ['Option 1', 'Option 2'],
+                    'className' => '',
+                ],
+            ],
+            'section' => [
+                'type' => 'section',
+                'label' => 'Section',
+                'icon' => '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5M3.75 5.25c.621 0 1.125.504 1.125 1.125V9.75c0 .621-.504 1.125-1.125 1.125H3.75M3.75 5.25c-.621 0-1.125.504-1.125 1.125V9.75c0 .621.504 1.125 1.125 1.125M3.75 14.25h16.5M3.75 14.25c.621 0 1.125.504 1.125 1.125v3.375c0 .621-.504 1.125-1.125 1.125H3.75m0-4.5c-.621 0-1.125.504-1.125 1.125v3.375c0 .621.504 1.125 1.125 1.125m0 0h16.5m0 0c.621 0 1.125-.504 1.125-1.125v-3.375c0-.621-.504-1.125-1.125-1.125" /></svg>',
+                'properties' => ['name', 'label', 'description', 'className'],
+                'non_input' => true,
+                'section' => true,
+                'defaults' => [
+                    'name' => 'section_field',
+                    'label' => 'Section Title',
+                    'description' => '',
+                    'className' => '',
+                ],
+            ],
         ];
     }
 

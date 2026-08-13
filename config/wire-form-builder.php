@@ -76,6 +76,23 @@ return [
 
         /*
         |----------------------------------------------------------------------
+        | Wizard (multi-step / section) navigation
+        |----------------------------------------------------------------------
+        */
+
+        'wizard' => [
+            'progress' => 'mb-6 flex items-center gap-2',
+            'progress_dot' => 'h-2.5 flex-1 rounded-full bg-gray-200 transition',
+            'progress_dot_active' => 'bg-indigo-600',
+            'progress_dot_done' => 'bg-indigo-400',
+            'step_header' => '',
+            'nav' => 'mt-6 flex items-center justify-between gap-3',
+            'btn_prev' => 'inline-flex items-center justify-center rounded-lg bg-gray-100 px-5 py-2.5 text-sm font-medium text-gray-700 shadow-sm transition hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 disabled:cursor-not-allowed disabled:opacity-40',
+            'btn_next' => 'inline-flex items-center justify-center rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-40',
+        ],
+
+        /*
+        |----------------------------------------------------------------------
         | Per-control style defaults.
         | Each control type supports: wrapper, label, input/select, plus
         | option-level classes for choice controls (checkbox/radio). Missing
@@ -146,6 +163,38 @@ return [
                 'error' => 'mt-1 text-xs text-red-600',
             ],
 
+            'header' => [
+                'wrapper' => 'border-b border-gray-200 pb-1',
+                'label' => 'block text-lg font-semibold text-gray-900',
+                'help' => 'mt-1 text-xs text-gray-500',
+                'error' => 'mt-1 text-xs text-red-600',
+            ],
+
+            'paragraph' => [
+                'wrapper' => '',
+                'label' => 'block text-sm leading-relaxed text-gray-600',
+                'help' => 'mt-1 text-xs text-gray-500',
+                'error' => 'mt-1 text-xs text-red-600',
+            ],
+
+            'checkbox_group' => [
+                'wrapper' => 'space-y-2',
+                'label' => 'mb-1.5 block text-sm font-medium text-gray-700',
+                'option_wrapper' => 'flex items-center gap-2.5',
+                'option_label' => 'text-sm text-gray-700',
+                'option_input' => 'h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500',
+                'help' => 'mt-1 text-xs text-gray-500',
+                'error' => 'mt-1 text-xs text-red-600',
+            ],
+
+            'section' => [
+                'wrapper' => 'break-inside-avoid border-t-2 border-indigo-200 pt-4 mt-2',
+                'label' => 'block text-xl font-bold text-gray-900',
+                'description' => 'mt-1 block text-sm text-gray-500',
+                'help' => 'mt-1 text-xs text-gray-500',
+                'error' => 'mt-1 text-xs text-red-600',
+            ],
+
         ],
 
     ],
@@ -165,9 +214,13 @@ return [
         'textarea',
         'select',
         'checkbox',
+        'checkbox_group',
         'radio',
         'date',
         'file',
+        'header',
+        'paragraph',
+        'section',
     ],
 
 ];

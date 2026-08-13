@@ -65,7 +65,9 @@ class FormRenderer extends Component
             if (! array_key_exists('value', $field)) {
                 $this->schemaFields[$index]['value'] = match ($field['type'] ?? 'text') {
                     'checkbox' => false,
+                    'checkbox_group' => [],
                     'file' => null,
+                    'header', 'paragraph', 'section' => null,
                     default => '',
                 };
             }
@@ -102,6 +104,12 @@ class FormRenderer extends Component
         $answers = [];
 
         foreach ($this->schemaFields as $field) {
+            $type = $field['type'] ?? 'text';
+
+            if (in_array($type, ['header', 'paragraph', 'section'], true)) {
+                continue;
+            }
+
             $name = $field['name'] ?? null;
             $value = $field['value'] ?? null;
 
@@ -111,6 +119,50 @@ class FormRenderer extends Component
         }
 
         return $answers;
+    }
+
+    /**
+     * Group the schema into wizard steps, splitting on `section` controls.
+     *
+     * Each returned step is:
+     *   ['section' => ?array, 'fields' => array<int, array>]
+     * where `fields` keys are the original schema indices (so `wire:model`
+     * bindings stay stable). Fields before the first section belong to an
+     * implicit introductory step. Layout-only fields (header/paragraph) are
+     * kept inside their step so they render inline.
+     *
+     * @return array<int, array{section: ?array, fields: array<int, array<string, mixed>>}>
+     */
+    public function steps(): array
+    {
+        if (! is_array($this->schemaFields)) {
+            return [];
+        }
+
+        $steps = [];
+        $current = ['section' => null, 'fields' => []];
+
+        foreach ($this->schemaFields as $index => $field) {
+            if (! is_array($field)) {
+                $field = ['type' => 'text', 'value' => ''];
+            }
+
+            if (($field['type'] ?? '') === 'section') {
+                if (! empty($current['fields']) || $current['section'] !== null) {
+                    $steps[] = $current;
+                }
+                $current = ['section' => $field, 'fields' => []];
+                continue;
+            }
+
+            $current['fields'][$index] = $field;
+        }
+
+        if (! empty($current['fields']) || $current['section'] !== null) {
+            $steps[] = $current;
+        }
+
+        return $steps;
     }
 
     public function render()

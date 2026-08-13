@@ -152,7 +152,7 @@ class FormBuilder extends Component
             return;
         }
 
-        if (in_array($this->editingField['type'], ['select', 'radio'], true)) {
+        if (in_array($this->editingField['type'], ['select', 'radio', 'checkbox_group'], true)) {
             $this->editingField['options'] = $this->parseOptions($this->editingOptionsText);
         }
 

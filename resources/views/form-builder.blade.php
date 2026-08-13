@@ -68,7 +68,10 @@
 
                     {{-- Field content --}}
                     <div class="w-full min-w-0">
-                        <p class="mb-1 truncate text-xs font-medium text-gray-400">{{ $field['name'] ?? '' }}</p>
+                        @if ($editingIndex === $index)
+                            <p class="mb-1 truncate font-mono text-xs text-gray-400"
+                                title="Field key">{{ $field['name'] ?? '' }}</p>
+                        @endif
 
                         {{-- Field preview --}}
                         @include('wire-form-builder::fields.' . $field['type'], [
@@ -107,7 +110,7 @@
                                 </div>
                             @endif
 
-                            @if (in_array($editingField['type'] ?? '', ['select', 'radio']))
+                            @if (in_array($editingField['type'] ?? '', ['select', 'radio', 'checkbox_group']))
                                 <div class="{{ config('wire-form-builder.styles.drawer_field') }}">
                                     <label class="{{ config('wire-form-builder.styles.drawer_label') }}">Options
                                         (one per line)</label>
@@ -116,13 +119,24 @@
                                 </div>
                             @endif
 
-                            <div class="{{ config('wire-form-builder.styles.drawer_field') }}">
-                                <label class="inline-flex items-center gap-2 text-sm text-gray-700">
-                                    <input type="checkbox" wire:model="editingField.required"
-                                        class="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-                                    Required
-                                </label>
-                            </div>
+                            @if (in_array($editingField['type'] ?? '', ['section']))
+                                <div class="{{ config('wire-form-builder.styles.drawer_field') }}">
+                                    <label class="{{ config('wire-form-builder.styles.drawer_label') }}">Description
+                                        (optional)</label>
+                                    <textarea wire:model="editingField.description" rows="3"
+                                        class="{{ config('wire-form-builder.styles.drawer_input') }}"></textarea>
+                                </div>
+                            @endif
+
+                            @if (!in_array($editingField['type'] ?? '', ['header', 'paragraph', 'section']))
+                                <div class="{{ config('wire-form-builder.styles.drawer_field') }}">
+                                    <label class="inline-flex items-center gap-2 text-sm text-gray-700">
+                                        <input type="checkbox" wire:model="editingField.required"
+                                            class="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                        Required
+                                    </label>
+                                </div>
+                            @endif
 
                             <div class="{{ config('wire-form-builder.styles.drawer_field') }}">
                                 <label class="{{ config('wire-form-builder.styles.drawer_label') }}">CSS Class
