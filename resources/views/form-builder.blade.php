@@ -1,4 +1,4 @@
-<div x-data class="grid grid-cols-1 gap-6 lg:grid-cols-[16rem_1fr]">
+<div x-data class="{{ config('wire-form-builder.styles.builder_layout', 'grid grid-cols-1 gap-6 sm:grid-cols-[16rem_1fr]') }}">
 
     {{-- Sidebar palette --}}
     <aside class="{{ config('wire-form-builder.styles.sidebar') }}">

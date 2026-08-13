@@ -30,7 +30,13 @@ return [
         'field_wrapper' => 'relative flex flex-col gap-3 rounded-xl border border-gray-200 bg-white p-4 pt-2 shadow-sm transition group hover:border-indigo-300 hover:shadow',
         'field_wrapper_selected' => 'ring-2 ring-indigo-500 border-indigo-500',
         'empty_canvas' => 'col-span-full flex min-h-[200px] items-center justify-center rounded-lg border border-dashed border-gray-300 text-sm text-gray-400',
-        'sidebar' => 'flex w-full shrink-0 flex-col gap-2 rounded-xl border border-gray-200 bg-white p-4 lg:w-64 p-2',
+        // Root grid for the builder: palette (sidebar) + canvas.
+        // Side-by-side on every screen except phones (<640px), where it stacks.
+        // Override this to change the breakpoint or force always side-by-side
+        // (e.g. 'grid grid-cols-[16rem_1fr] gap-6').
+        'builder_layout' => 'grid grid-cols-1 gap-6 sm:grid-cols-[16rem_1fr]',
+
+        'sidebar' => 'flex w-full shrink-0 flex-col gap-2 rounded-xl border border-gray-200 bg-white p-2',
         'sidebar_title' => 'mb-1 text-xs font-semibold uppercase tracking-wider text-gray-500',
         'palette_item' => 'flex cursor-grab select-none items-center rounded-lg border border-gray-200 bg-white p-3 text-sm font-medium text-gray-700 shadow-sm transition hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-600 active:cursor-grabbing',
         'palette_icon' => 'mr-2 inline-flex h-5 w-5 shrink-0 items-center justify-center text-indigo-500',
